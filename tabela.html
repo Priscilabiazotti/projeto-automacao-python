@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Tabela</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <style>
+        .async-hide {
+            opacity: 0 !important
+        }
+    </style>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, #f5ba3a, #ffffff);
+        }
+    </style>
+
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="ico-python.png" type="image/x-icon">
+</head>
+
+<body class="body">
+    <div class="pgtpy-secao">
+        <div class="pgtpy-container">
+            <div class="pgtpy-div-formulario">
+                <div class="pgtpy-titulo-copy titulo">Formulário de Cadastro de Produtos</div>
+                <div class="pgtpy-html w-embed">
+                    <form method="POST" action="#">
+                        <div class="form-inputs">
+                            <div class="form-campo">
+                                <label for="nome">Código do Produto</label>
+                                <input type="text" id="codigo" name="codigo" placeholder="Código do produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">Marca do Produto</label>
+                                <input type="text" id="marca" name="marca" placeholder="Marca do Produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">Tipo do Produto</label>
+                                <input type="text" id="tipo" name="tipo" placeholder="Tipo do Produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">Categoria do Produto</label>
+                                <input type="text" id="categoria" name="categoria" placeholder="Categoria do Produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">Preço Unitário do Produto</label>
+                                <input type="text" id="preco_unitario" name="preco_unitario"
+                                    placeholder="Preço Unitário do Produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">Custo do Produto</label>
+                                <input type="text" id="custo" name="custo" placeholder="Custo do Produto" />
+                                <small></small>
+                            </div>
+
+                            <div class="form-campo">
+                                <label for="quantidade">OBS</label>
+                                <input type="text" id="obs" name="obs" placeholder="Observações" />
+                                <small></small>
+                            </div>
+                        </div>
+
+                        <div class="form-botoes">
+                            <button type="submit" id="pgtpy-botao">Enviar</button>
+
+                            <button class="btn--limpar" id="pgtpy-botao-limpar">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pgtpy-div-tabela">
+                <div class="pgtpy-subtitulo subtitulo">Produtos Cadastrados</div>
+                <div class="w-embed">
+                    <table class="pgtpy-container-tabela">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Marca</th>
+                                <th>Tipo</th>
+                                <th>Categoria</th>
+                                <th>Preço Un.</th>
+                                <th>Custo</th>
+                                <th>OBS</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .titulo {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .subtitulo {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .pgtpy-html {
+            margin-top: 3rem;
+        }
+
+        .form-campo label {
+            font-size: 1.8rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        td,
+        th {
+            padding: 3.5rem;
+            text-align: center;
+            border-bottom: solid 2px white;
+        }
+
+        th {
+            font-size: 2rem;
+            padding: 2rem;
+        }
+
+        td {
+            font-size: 1.5rem;
+            padding: 1rem;
+
+        }
+
+        th {
+            background-color: #fcf267;
+        }
+
+        td {
+            background-color: #b3b0ab;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        form,
+        .form-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+        }
+
+        .form-campo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pgtpy-div-tabela {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+        }
+
+        .form-campo label {
+            margin-left: 1rem;
+
+        }
+
+        .form-campo input {
+            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            border: solid 1px rgba(0, 0, 0, 0.5);
+            font-size: 1.8rem;
+            width: 40%;
+        }
+
+        .form-botoes {
+            align-self: center;
+            padding: 1.5rem 3.2rem;
+        }
+
+        form button {
+            padding: 1.5rem 3.5rem;
+            font-size: 1.5rem;
+            line-height: inherit;
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            border: none;
+            background-color: #b425a1;
+            border-right: solid 3px #360e2e;
+            border-bottom: solid 3px #410e34;
+        }
+
+        form button:hover {
+            border-right: solid 3px #f575ea;
+            border-bottom: solid 3px #f582c9;
+        }
+
+        .btn--limpar {
+            font-size: 1.5rem;
+            background-color: #38aaec;
+            border-right: solid 3px #143a8d;
+            border-bottom: solid 3px #1e20a1;
+        }
+
+        .btn--limpar:hover {
+            border-right: solid 3px #6079eb;
+            border-bottom: solid 3px #747cec;
+        }
+
+        form small {
+            display: none;
+            margin-top: 0.4rem;
+            margin-left: 2rem;
+            color: inherit;
+            font-family: inherit;
+            max-width: 100%;
+        }
+
+        .sucesso input {
+            border: solid 2px green;
+        }
+
+        .erro input {
+            border: solid 2px red;
+        }
+
+        .erro small {
+            display: inline-block;
+        }
+
+        @media (max-width: 991px) {
+            html {
+                font-size: 56.25%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            html {
+                font-size: 50%;
+            }
+        }
+
+        @media (max-width: 479px) {
+            html {
+                font-size: 43.75%;
+            }
+        }
+    </style>
+    </div>
+    <script>
+        const arrayElementos = [];
+
+        const botaoEl = document.querySelector("#pgtpy-botao");
+        const botaoLimparEl = document.querySelector("#pgtpy-botao-limpar");
+        const containerEl = document.querySelector(".pgtpy-container-tabela");
+        const tabelaEl = document.querySelector(".pgtpy-div-tabela");
+        const formActive = document.querySelector("form");
+
+        const codigoEl = document.querySelector("#codigo");
+        const marcaEl = document.querySelector("#marca");
+        const tipoEl = document.querySelector("#tipo");
+        const categoriaEl = document.querySelector("#categoria");
+        const precoEl = document.querySelector("#preco_unitario");
+        const custoEl = document.querySelector("#custo");
+        const obsEl = document.querySelector("#obs");
+
+        var limpouTabela = false;
+
+        // Carrega a lista do LocalStorage
+        let listaProdutos =
+            JSON.parse(localStorage.getItem("listaProdutos")) ?? [];
+
+        // Validação formulário
+        const obrigatorio = (value) => (value === "" ? false : true);
+
+        const mostrarErro = (input, message) => {
+            const campoForm = input.parentElement;
+
+            campoForm.classList.remove("sucesso");
+            campoForm.classList.add("erro");
+
+            const erro = campoForm.querySelector("small");
+            if (error != null) {
+                error.textContent = message;
+            }
+        };
+
+        const mostrarSucesso = (input) => {
+            const campoForm = input.parentElement;
+
+            campoForm.classList.remove("erro");
+            campoForm.classList.add("sucesso");
+
+            const error = campoForm.querySelector("small");
+            if (error != null) {
+                error.textContent = "";
+            }
+        };
+
+        const checarCampos = () => {
+            let resposta = true;
+            let inputEls = document.querySelectorAll("input");
+
+            inputEls.forEach(function (el) {
+                if (el.id != "obs") {
+                    var elValor = el.value.trim();
+
+                    if (!obrigatorio(elValor)) {
+                        mostrarErro(el, "O campo não pode ficar vazio.");
+                        resposta = false;
+                    } else {
+                        mostrarSucesso(el);
+                    }
+                }
+            });
+
+            return resposta;
+        };
+
+        formActive.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (!limpouTabela) {
+                let camposValidos = checarCampos();
+
+                let formValido = camposValidos;
+
+                if (formValido) {
+                    cliqueiBotao();
+                }
+            } else if (listaProdutos.length == 0) {
+                limpouTabela = false;
+            }
+        });
+
+        function updateLocalStorage() {
+            localStorage.setItem("listaProdutos", JSON.stringify(listaProdutos));
+        }
+
+        function limparTabela() {
+            localStorage.removeItem("listaProdutos");
+            listaProdutos.length = 0;
+            limpouTabela = true;
+
+            containerEl.innerHTML = `<thead>
+  <tr>
+    <th>Código</th>
+    <th>Marca</th>
+    <th>Tipo</th>
+    <th>Categoria</th>
+    <th>Preço Un.</th>
+    <th>Custo</th>
+    <th>OBS</th>
+  </tr>
+</thead>
+<tbody></tbody>`;
+            tabelaEl.classList.remove("visivel");
+        }
+
+        function updateUI(objetoDadosFormulario) {
+            containerEl
+                .querySelector("tbody")
+                .insertAdjacentHTML(
+                    "beforeend",
+                    "<tr> <td>" +
+                    objetoDadosFormulario[0] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[1] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[2] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[3] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[4] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[5] +
+                    "</td> <td>" +
+                    objetoDadosFormulario[6] +
+                    "</td> </tr>"
+                );
+
+            tabelaEl.classList.add("visivel");
+        }
+
+        function cliqueiBotao() {
+            let objetoDadosFormulario = [
+                codigoEl.value,
+                marcaEl.value,
+                tipoEl.value,
+                categoriaEl.value,
+                precoEl.value,
+                custoEl.value,
+                obsEl.value,
+            ];
+
+            formActive.reset();
+
+            listaProdutos.push(objetoDadosFormulario);
+
+            updateLocalStorage();
+            updateUI(objetoDadosFormulario);
+        }
+
+        botaoLimparEl.addEventListener("click", limparTabela);
+
+        listaProdutos.forEach(updateUI);
+    </script>
+    </div>
+    </div>
+</body>
+
+</html>
